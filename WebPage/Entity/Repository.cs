@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
+
 namespace WebPage.Entity
 {
-    public class SignUpEntity
+    public class Repository
     {
         public string fName { get; set; }
         public string lName { get; set; }
@@ -11,13 +13,23 @@ namespace WebPage.Entity
         public long mobile { get; set; }
         public string password { get; set; }
         public string location { get; set; }
-
-        
+        internal static DataTable ViewLocation()
+        {
+            string connectionString1 = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString1))
+            {
+                sqlConnection.Open();
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from Location", sqlConnection);
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+                return dataTable;
+            }
+        }
 
 
         static string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
         SqlConnection dbConnection = new SqlConnection(connectionString);
-        public int CustomerDbConnection(SignUpEntity SignUpObject)
+        public int CustomerDbConnection(Repository SignUpObject)
         {
             int affectedRows;
             try

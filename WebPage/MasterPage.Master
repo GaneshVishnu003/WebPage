@@ -7,14 +7,20 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <style>
+         h1{
+            background-color:aqua;
+        }
+    </style>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="MasterForm" runat="server">
         <div>
             <h1 style="text-align:center;color:darkblue">Online Cab Booking</h1>
-            <span style="margin-left: 1000px">
+            <span style="margin-left: 900px">
                 <asp:HyperLink runat="server" ID="lnkSignIn" Text="SignIn" NavigateUrl="~/SignIn.aspx"></asp:HyperLink>
                 <asp:HyperLink runat="server" ID="lnkSignUp" Text="SignUp" NavigateUrl="~/SignUp.aspx"></asp:HyperLink>
+                <asp:HyperLink runat="server" ID="lnkViewLocation" Text="Locations" NavigateUrl="~/ViewLocations.aspx"></asp:HyperLink>
             </span>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>

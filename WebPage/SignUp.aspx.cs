@@ -16,7 +16,7 @@ namespace WebPage
         }
         protected void signup_Click(object sender, EventArgs e)
         {
-            SignUpEntity SignUpObject = new SignUpEntity();
+            Repository SignUpObject = new Repository();
             SignUpObject.fName = txtFirst.Text;
             SignUpObject.lName = txtLast.Text;
             SignUpObject.mail = mail.Text;

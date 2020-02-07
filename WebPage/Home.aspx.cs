@@ -13,5 +13,10 @@ namespace WebPage
         {
 
         }
+
+        protected void ibnEdit_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Write("Done");
+        }
     }
 }

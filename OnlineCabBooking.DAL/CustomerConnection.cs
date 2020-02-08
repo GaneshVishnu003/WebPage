@@ -1,21 +1,11 @@
 ﻿using System;
-using System.Data.SqlClient;
-using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 
-namespace WebPage.Entity
+namespace OnlineCabBooking.DAL
 {
-    public class Repository
+    public class CustomerConnection
     {
-        public string fName { get; set; }
-        public string lName { get; set; }
-        public string mail { get; set; }
-        public long mobile { get; set; }
-        public string password { get; set; }
-        public string location { get; set; }
-
-        static string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-        static SqlConnection dbConnection = new SqlConnection(connectionString);
         internal static DataTable ViewLocation()
         {
             string connectionString1 = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
@@ -29,29 +19,13 @@ namespace WebPage.Entity
             }
         }
 
-        internal static DataTable Addnew(string newLocation)
-        {
-            //DataTable data=new DataTable();
-            //using(SqlConnection sqlConnection=new SqlConnection(connectionString))
-            {
-                dbConnection.Open();
-                string command = "spInsertLocation";
-                using(SqlCommand insertCommand=new SqlCommand(command,dbConnection))
-                {
-                    insertCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                    insertCommand.Parameters.AddWithValue("@newLocation", newLocation);
-                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-                    sqlDataAdapter.InsertCommand = insertCommand;
-                    int i = insertCommand.ExecuteNonQuery();
-                    SqlDataAdapter sqlDataAdapter1 = new SqlDataAdapter("select * from location",dbConnection);
-                    DataTable dataTable = new DataTable();
-                    sqlDataAdapter1.Fill(dataTable);
-                    return dataTable;
-                }
-            }
-        }
-        
-        public int CustomerDbConnection(Repository SignUpObject)
+
+        static string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+        SqlConnection dbConnection = new SqlConnection(connectionString);
+
+        public static object ConfigurationManager { get; private set; }
+
+        public int CustomerDbConnection(CustomerRepository SignUpObject)
         {
             int affectedRows;
             try
@@ -63,7 +37,7 @@ namespace WebPage.Entity
                     insertCommand.CommandType = System.Data.CommandType.StoredProcedure;
                     insertCommand.Parameters.AddWithValue("@fname", SignUpObject.fName);
                     insertCommand.Parameters.AddWithValue("@lname", SignUpObject.lName);
-                    insertCommand.Parameters.AddWithValue("@mailId",SignUpObject.mail);
+                    insertCommand.Parameters.AddWithValue("@mailId", SignUpObject.mail);
                     insertCommand.Parameters.AddWithValue("@phone", SignUpObject.mobile);
                     insertCommand.Parameters.AddWithValue("@location", SignUpObject.location);
                     insertCommand.Parameters.AddWithValue("@password", SignUpObject.password);

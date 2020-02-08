@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPage", "WebPage\WebPage.csproj", "{1D75F12A-6ED0-42F3-807D-DAF6B0254420}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCabBooking.BL", "OnlineCabBooking.BL\OnlineCabBooking.BL.csproj", "{16F049D1-1B31-4888-8A2A-6F7AD49A62C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCabBooking.Common", "OnlineCabBooking.Common\OnlineCabBooking.Common.csproj", "{96141D41-D866-44AE-B9F1-8A660FFA254C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{1D75F12A-6ED0-42F3-807D-DAF6B0254420}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D75F12A-6ED0-42F3-807D-DAF6B0254420}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D75F12A-6ED0-42F3-807D-DAF6B0254420}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16F049D1-1B31-4888-8A2A-6F7AD49A62C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16F049D1-1B31-4888-8A2A-6F7AD49A62C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16F049D1-1B31-4888-8A2A-6F7AD49A62C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16F049D1-1B31-4888-8A2A-6F7AD49A62C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96141D41-D866-44AE-B9F1-8A660FFA254C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96141D41-D866-44AE-B9F1-8A660FFA254C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96141D41-D866-44AE-B9F1-8A660FFA254C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96141D41-D866-44AE-B9F1-8A660FFA254C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

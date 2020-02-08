@@ -1,12 +1,19 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
+using OnlineCabBooking.Entity;
 
 namespace OnlineCabBooking.DAL
 {
-    public class CustomerConnection
+    public class CustomerDAL
     {
-        internal static DataTable ViewLocation()
+        static string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+        static SqlConnection dbConnection = new SqlConnection(connectionString);
+
+        
+
+        public static DataTable ViewLocation()
         {
             string connectionString1 = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             using (SqlConnection sqlConnection = new SqlConnection(connectionString1))
@@ -19,13 +26,29 @@ namespace OnlineCabBooking.DAL
             }
         }
 
+        public static DataTable Addnew(string newLocation)
+        {
+            //DataTable data=new DataTable();
+            //using(SqlConnection sqlConnection=new SqlConnection(connectionString))
+            {
+                dbConnection.Open();
+                string command = "spInsertLocation";
+                using (SqlCommand insertCommand = new SqlCommand(command, dbConnection))
+                {
+                    insertCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    insertCommand.Parameters.AddWithValue("@newLocation", newLocation);
+                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+                    sqlDataAdapter.InsertCommand = insertCommand;
+                    int i = insertCommand.ExecuteNonQuery();
+                    SqlDataAdapter sqlDataAdapter1 = new SqlDataAdapter("select * from location", dbConnection);
+                    DataTable dataTable = new DataTable();
+                    sqlDataAdapter1.Fill(dataTable);
+                    return dataTable;
+                }
+            }
+        }
 
-        static string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-        SqlConnection dbConnection = new SqlConnection(connectionString);
-
-        public static object ConfigurationManager { get; private set; }
-
-        public int CustomerDbConnection(CustomerRepository SignUpObject)
+        public static int CustomerDbConnection(CustomerEntity SignUpObject)
         {
             int affectedRows;
             try
@@ -37,7 +60,7 @@ namespace OnlineCabBooking.DAL
                     insertCommand.CommandType = System.Data.CommandType.StoredProcedure;
                     insertCommand.Parameters.AddWithValue("@fname", SignUpObject.fName);
                     insertCommand.Parameters.AddWithValue("@lname", SignUpObject.lName);
-                    insertCommand.Parameters.AddWithValue("@mailId", SignUpObject.mail);
+                    insertCommand.Parameters.AddWithValue("@mailid", SignUpObject.mail);
                     insertCommand.Parameters.AddWithValue("@phone", SignUpObject.mobile);
                     insertCommand.Parameters.AddWithValue("@location", SignUpObject.location);
                     insertCommand.Parameters.AddWithValue("@password", SignUpObject.password);
@@ -49,7 +72,6 @@ namespace OnlineCabBooking.DAL
             }
             catch (Exception e)
             {
-                //Console.WriteLine("{0}- {1}", e.GetType(), e.Message);
                 return 0;
             }
             finally

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using WebPage.Entity;
+using OnlineCabBooking.Entity;
+using OnlineCabBooking.DAL;
 
 namespace WebPage
 {
@@ -16,7 +16,7 @@ namespace WebPage
         protected void Refresh()
         {
             DataTable dataTable = new DataTable();
-            dataTable = Repository.ViewLocation();
+            dataTable = CustomerDAL.ViewLocation();
             idLocationView1.DataSource = dataTable;
             idLocationView1.DataBind();
         }
@@ -24,7 +24,7 @@ namespace WebPage
         {
                 string newLocation =(idLocationView1.FooterRow.FindControl("txtLocationFooter") as TextBox).Text.Trim();
                 DataTable dataTable = new DataTable();
-                dataTable=Repository.Addnew(newLocation);
+                dataTable=CustomerDAL.Addnew(newLocation);
                 Refresh();
                 lblSuccess.Text = "Successfully added";
                 lblFailure.Text = "";

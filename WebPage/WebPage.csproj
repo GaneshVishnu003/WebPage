@@ -112,7 +112,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -182,14 +181,6 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Entity\Repository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -265,6 +256,24 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineCabBooking.BL\OnlineCabBooking.BL.csproj">
+      <Project>{16f049d1-1b31-4888-8a2a-6f7ad49a62c3}</Project>
+      <Name>OnlineCabBooking.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineCabBooking.Common\OnlineCabBooking.Common.csproj">
+      <Project>{96141d41-d866-44ae-b9f1-8a660ffa254c}</Project>
+      <Name>OnlineCabBooking.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineCabBooking.DAL\OnlineCabBooking.DAL.csproj">
+      <Project>{62dbdab3-7b2f-458a-b0a2-a2fe58912bd4}</Project>
+      <Name>OnlineCabBooking.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineCabBooking.Entity\OnlineCabBooking.Entity.csproj">
+      <Project>{f33718d0-f5e4-4422-a4f0-a065b9b2bb77}</Project>
+      <Name>OnlineCabBooking.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

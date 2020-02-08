@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using WebPage.Entity;
+using OnlineCabBooking.Entity;
+using OnlineCabBooking.DAL;
 
 namespace WebPage
 {
@@ -16,16 +12,15 @@ namespace WebPage
         }
         protected void signup_Click(object sender, EventArgs e)
         {
-            Repository SignUpObject = new Repository();
+            CustomerEntity SignUpObject = new CustomerEntity();
             SignUpObject.fName = txtFirst.Text;
             SignUpObject.lName = txtLast.Text;
             SignUpObject.mail = mail.Text;
             SignUpObject.mobile = long.Parse(mobileNum.Text);
             SignUpObject.location = txtlocation.Text;
             SignUpObject.password = txtConPassword.Text;
+            int rows = CustomerDAL.CustomerDbConnection(SignUpObject);
             Response.Write("Signup Successfull");
-            int rows = SignUpObject.CustomerDbConnection(SignUpObject);
-            //Response.Write("Done process" + rows);
         }
     }
 }

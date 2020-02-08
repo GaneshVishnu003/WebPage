@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCabBooking.BL", "Onli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCabBooking.Common", "OnlineCabBooking.Common\OnlineCabBooking.Common.csproj", "{96141D41-D866-44AE-B9F1-8A660FFA254C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCabBooking.DAL", "OnlineCabBooking.DAL\OnlineCabBooking.DAL.csproj", "{62DBDAB3-7B2F-458A-B0A2-A2FE58912BD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCabBooking.Entity", "OnlineCabBooking.Entity\OnlineCabBooking.Entity.csproj", "{F33718D0-F5E4-4422-A4F0-A065B9B2BB77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{96141D41-D866-44AE-B9F1-8A660FFA254C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96141D41-D866-44AE-B9F1-8A660FFA254C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96141D41-D866-44AE-B9F1-8A660FFA254C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62DBDAB3-7B2F-458A-B0A2-A2FE58912BD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62DBDAB3-7B2F-458A-B0A2-A2FE58912BD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62DBDAB3-7B2F-458A-B0A2-A2FE58912BD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62DBDAB3-7B2F-458A-B0A2-A2FE58912BD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F33718D0-F5E4-4422-A4F0-A065B9B2BB77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F33718D0-F5E4-4422-A4F0-A065B9B2BB77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F33718D0-F5E4-4422-A4F0-A065B9B2BB77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F33718D0-F5E4-4422-A4F0-A065B9B2BB77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

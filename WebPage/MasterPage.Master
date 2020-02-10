@@ -11,6 +11,12 @@
          h1{
             background-color:aqua;
         }
+         form{
+             background-color: springgreen;
+         }
+         body{
+             background-image:url("~/images/car.jpg");
+         }
     </style>
 </head>
 <body>

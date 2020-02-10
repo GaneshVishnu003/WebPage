@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>16f049d1-1b31-4888-8a2a-6f7ad49a62c3</ProjectGuid>
+    <ProjectGuid>{16F049D1-1B31-4888-8A2A-6F7AD49A62C3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OnlineCabBooking.BL</RootNamespace>
@@ -31,24 +31,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="CustomerBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineCabBooking.Common\OnlineCabBooking.Common.csproj">
+      <Project>{96141d41-d866-44ae-b9f1-8a660ffa254c}</Project>
+      <Name>OnlineCabBooking.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineCabBooking.DAL\OnlineCabBooking.DAL.csproj">
+      <Project>{62dbdab3-7b2f-458a-b0a2-a2fe58912bd4}</Project>
+      <Name>OnlineCabBooking.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineCabBooking.Entity\OnlineCabBooking.Entity.csproj">
+      <Project>{f33718d0-f5e4-4422-a4f0-a065b9b2bb77}</Project>
+      <Name>OnlineCabBooking.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>

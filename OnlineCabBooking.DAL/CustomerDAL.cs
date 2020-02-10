@@ -11,12 +11,46 @@ namespace OnlineCabBooking.DAL
         static string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
         static SqlConnection dbConnection = new SqlConnection(connectionString);
 
-        
+        public static void InsertRow(string location)
+        {
+            using(SqlCommand cmd=new SqlCommand("spInsert",dbConnection))
+            {
+                dbConnection.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@location", location);
+                cmd.ExecuteNonQuery();
+                dbConnection.Close();
+            }
+        }
+
+        public static void UpdateRow(string location,int id)
+        {
+            using (SqlCommand cmd = new SqlCommand("spUpdate", dbConnection))
+            {
+                dbConnection.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@location", location);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static void DeleteRow(int id)
+        {
+            using (SqlCommand cmd = new SqlCommand("spDelete", dbConnection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", id);
+                dbConnection.Open();
+                cmd.ExecuteNonQuery();
+                dbConnection.Close();
+            }
+        }
 
         public static DataTable ViewLocation()
         {
-            string connectionString1 = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString1))
+            //string connectionString1 = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
                 sqlConnection.Open();
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from Location", sqlConnection);
@@ -25,13 +59,12 @@ namespace OnlineCabBooking.DAL
                 return dataTable;
             }
         }
-
         public static DataTable Addnew(string newLocation)
         {
             //DataTable data=new DataTable();
             //using(SqlConnection sqlConnection=new SqlConnection(connectionString))
             {
-                dbConnection.Open();
+               // dbConnection.Open();
                 string command = "spInsertLocation";
                 using (SqlCommand insertCommand = new SqlCommand(command, dbConnection))
                 {
@@ -39,10 +72,12 @@ namespace OnlineCabBooking.DAL
                     insertCommand.Parameters.AddWithValue("@newLocation", newLocation);
                     SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
                     sqlDataAdapter.InsertCommand = insertCommand;
+                    dbConnection.Open();
                     int i = insertCommand.ExecuteNonQuery();
                     SqlDataAdapter sqlDataAdapter1 = new SqlDataAdapter("select * from location", dbConnection);
                     DataTable dataTable = new DataTable();
                     sqlDataAdapter1.Fill(dataTable);
+                    dbConnection.Close();
                     return dataTable;
                 }
             }
